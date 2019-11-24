@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <head>
+        <meta charset="UTF-8">
+        <title>Web components</title>
+        <style>
+            body {
+                font-family: 'Roboto Slab';
+            }
+
+            .row {
+                display: flex;
+                margin: 20px;
+            }
+
+            .row-label {
+                display: inline-block;
+                width: 300px;
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            .row-item {
+                padding-left: 50px;
+            }
+
+            ul {
+                padding-inline-start: 16px;
+            }
+
+            @keyframes loader {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+        </style>
+    </head>
+    <body>
+
+    <!--    Custom checkbox-->
+    <div class="row">
+        <label class="row-label">
+            Custom checkbox:
+        </label>
+        <div class="row-item">
+            <checkbox-component></checkbox-component>
+        </div>
+    </div>
+
+    <!--    Expanding UL (Extends) -->
+    <div class="row">
+        <label class="row-label">
+            Expanding UL (Наследование с нативного компонента):
+        </label>
+        <div class="row-item">
+            <ul is="expanding-list">
+                <li>
+                    <span>C:\</span>
+                    <ul>
+                        <li><span>Directory 1</span>
+                            <ul>
+                                <li>Directory 1</li>
+                                <li>Directory 2</li>
+                            </ul>
+                        </li>
+                        <li><span>Directory 2</span>
+                            <ul>
+                                <li>Directory 1</li>
+                                <li>Directory 2</li>
+                                <li>Directory 3</li>
+                            </ul>
+                        </li>
+                        <li><span>Directory 3</span>
+                            <ul>
+                                <li>Directory 1</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--   Loading button   -->
+    <div class="row">
+        <div class="row-label">
+            Loading button
+        </div>
+        <div class="row-item" style="width: 125px; display: flex; align-items: center; justify-content: center">
+            <loading-button-component>
+                <label>Отправить</label>
+                <label slot="complete-message">Отправлено</label>
+            </loading-button-component>
+        </div>
+    </div>
+    </body>
+    <script src="./components/checkbox.component.js"></script>
+    <script src="./components/expanding-list.component.js"></script>
+    <script src="./components/loading-button.component.js"></script>
+</html>
