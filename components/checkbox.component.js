@@ -28,6 +28,7 @@
     `;
 
     class CheckboxComponent extends HTMLElement {
+        // Список атрибутов для "прослушки"
         static get observedAttributes() {
             return ['checked', 'disabled'];
         }
@@ -38,6 +39,7 @@
             this.shadowRoot.appendChild(template.content.cloneNode(true));
         }
 
+        // Колбэк при подключении компонента (аналог OnInit)
         connectedCallback() {
             if (!this.hasAttribute('role'))
                 this.setAttribute('role', 'checkbox');
@@ -50,6 +52,7 @@
             this.addEventListener('click', this._onClick);
         }
 
+        // Переопределение свойств, которые были заданы до инита компонента
         _upgradeProperty(prop) {
             if (this.hasOwnProperty(prop)) {
                 let value = this[prop];
@@ -58,6 +61,7 @@
             }
         }
 
+        // Колбэк при уничтожении компонента (аналог OnDestroy)
         disconnectedCallback() {
             this.removeEventListener('click', this._onClick);
         }
@@ -86,6 +90,7 @@
             return this.hasAttribute('disabled');
         }
 
+        // Колбэк при каждом изменении атрибута
         attributeChangedCallback(name, oldValue, newValue) {
             const hasValue = newValue !== null;
             switch (name) {
